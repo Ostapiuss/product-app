@@ -1,25 +1,21 @@
-import logo from './logo.svg';
+/* eslint-disable arrow-body-style */
+/* eslint-disable import/prefer-default-export */
+/* eslint-disable react/jsx-filename-extension */
+import React, { useEffect, useState } from 'react';
 import './App.css';
+import { product } from './products';
+import { ProductList } from './components/ProductList';
 
-function App() {
+export const App = () => {
+  const [currentData, setData] = useState([]);
+
+  useEffect(() => {
+    setData(product);
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="products">
+      <ProductList products={currentData} />
     </div>
   );
-}
-
-export default App;
+};
