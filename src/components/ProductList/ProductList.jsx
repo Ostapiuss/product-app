@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import React from 'react';
 import PropTypes from 'prop-types';
 import like from '../../images/icon.png';
@@ -10,17 +11,13 @@ export const ProductList = ({ products }) => (
       <li
         key={product.id}
         className="product-list__item item"
-        style={{ width: '500px', height: '450px' }}
+        style={{ width: '500px' }}
       >
         <h2
           className="item__title"
         >
           {product.name.toUpperCase()}
         </h2>
-        <div className="item__container">
-          <img alt="iphone" src={like} className="item__like" />
-          <img alt="iphone" src={like} className="item__like" />
-        </div>
 
         <div>
           <img
@@ -30,6 +27,26 @@ export const ProductList = ({ products }) => (
             style={{ height: '300px' }}
           />
         </div>
+
+        <p className="item__description">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aliquam fugiat distinctio corrupti facilis fuga quisquam. Deserunt minus, perferendis quos</p>
+
+        <p>
+          {`Count: ${product.count}`}
+        </p>
+
+        <p>
+          {`Color: ${product.color}`}
+        </p>
+
+        <p>
+          {`Size: ${product.size.width} x ${product.size.height}`}
+        </p>
+
+        <div className="item__container">
+          <img alt="iphone" src={like} className="item__like" />
+          <img alt="iphone" src={like} className="item__like" />
+        </div>
+
       </li>
     ))}
   </ul>

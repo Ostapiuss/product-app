@@ -1,13 +1,11 @@
-/* eslint-disable arrow-body-style */
-/* eslint-disable import/prefer-default-export */
-/* eslint-disable react/jsx-filename-extension */
 import React, { useEffect, useState } from 'react';
-import './App.css';
+import './App.scss';
 import { product } from './products';
 import { ProductList } from './components/ProductList';
 
 export const App = () => {
   const [currentData, setData] = useState([]);
+  const [isShowData, setShowData] = useState(false);
 
   useEffect(() => {
     setData(product);
@@ -15,7 +13,19 @@ export const App = () => {
 
   return (
     <div className="products">
-      <ProductList products={currentData} />
+      <button
+        className="products__show-button"
+        type="button"
+        onClick={() => {
+          setShowData(!isShowData);
+        }}
+      >
+        {isShowData ? 'Hide Products' : 'Show Products'}
+      </button>
+
+      {isShowData && (
+        <ProductList products={currentData} />
+      )}
     </div>
   );
 };

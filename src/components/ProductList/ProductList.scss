@@ -1,5 +1,8 @@
 .product-list {
   display: flex;
+  justify-content: space-between;
+  padding: 0;
+
   &__item {
     position: relative;
     list-style: none;
@@ -12,7 +15,7 @@
 
     transition: transform 0.2s ease-in;
 
-    padding: 0 20px;
+    padding: 20px;
 
     &:hover {
       transform: scale(1.05);
@@ -22,13 +25,10 @@
 
 .item {
   &__photo {
-    position: absolute;
+    position: relative;
     left: 50%;
-    right: 50%;
 
-    // bottom: 60px;
-
-    transform: translate(-50%);
+    transform: translateX(-50%);
   }
 
   &__title {
@@ -56,6 +56,11 @@
   &__container {
     display: flex;
     width: 100%;
-    justify-content: space-between;
+    justify-content: space-around;
+  }
+
+  &__description {
+    max-width: 100%;
+    text-align: justify;
   }
 }

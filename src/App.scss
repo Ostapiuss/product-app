@@ -28,6 +28,30 @@
   color: #61dafb;
 }
 
+.products {
+  &__show-button {
+    outline: none;
+    border: 2px solid transparent;
+    height: 50px;
+    width: 150px;
+    color: #ffff;
+    cursor: pointer;
+    background: linear-gradient(#2367db,#236ada);
+    box-shadow: 1px 1px 5px #2367db;
+
+    margin: 50px 0px 0px 20px;
+
+    transition: all 0.2s ease-in;
+
+    &:hover {
+      border: 2px solid #2367db;
+      background: transparent;
+      color: #2367db;
+    }
+
+  }
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
