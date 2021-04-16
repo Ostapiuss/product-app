@@ -2,8 +2,8 @@
 export const product = [
   {
     id: 1,
-    imageUrl: 'some url here',
-    name: 'Product name 1',
+    imageUrl: 'http://pngimg.com/uploads/iphone_12/iphone_12_PNG27.png',
+    name: 'Iphone 12',
     count: 4,
     size: {
       width: 200,
@@ -14,8 +14,8 @@ export const product = [
   },
   {
     id: 2,
-    imageUrl: 'some url here',
-    name: 'Product name 2',
+    imageUrl: 'http://pngimg.com/uploads/iphone_12/iphone_12_PNG27.png',
+    name: 'Iphone 12',
     count: 4,
     size: {
       width: 200,
@@ -26,8 +26,8 @@ export const product = [
   },
   {
     id: 3,
-    imageUrl: 'some url here',
-    name: 'Product name 3',
+    imageUrl: 'http://pngimg.com/uploads/iphone_12/iphone_12_PNG27.png',
+    name: 'Iphone 12',
     count: 4,
     size: {
       width: 200,
@@ -38,8 +38,8 @@ export const product = [
   },
   {
     id: 4,
-    imageUrl: 'some url here',
-    name: 'Product name 4',
+    imageUrl: 'http://pngimg.com/uploads/iphone_12/iphone_12_PNG27.png',
+    name: 'Iphone 12',
     count: 4,
     size: {
       width: 200,
