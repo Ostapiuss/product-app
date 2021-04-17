@@ -45,7 +45,7 @@ export const ProductList = ({ products }) => (
         </p>
 
         <p>
-          {`Size: ${product.size.width} x ${product.size.height}`}
+          {`Size: ${product.width} x ${product.height}`}
         </p>
 
         <div className="product__container">

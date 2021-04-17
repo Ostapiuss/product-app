@@ -1,16 +1,15 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import firebase from 'firebase/app';
-// eslint-disable-next-line import/no-extraneous-dependencies
+
 import 'firebase/firestore';
 
 const firebaseConfig = {
-  apiKey: process.env.REACT_FIREBASE_API_KEY,
-  authDomain: process.env.REACT_FIREBASE_DOMAIN,
-  databaseURL: process.env.REACT_FIREBASE_DATABASE,
-  projectId: process.env.REACT_FIREBASE_PROJECT_ID,
-  storageBucket: process.env.REACT_FIREBASSE_STORAGE_BUCKET,
-  messagingSenderId: process.env.REACT_FIREBASE_SENDER_ID,
-  appId: process.env.REACT_FIREBASE_APP_ID,
+  apiKey: 'AIzaSyD5WQwH2zEo3LOhc6knDkXg1E9KcigqIpw',
+  authDomain: 'product-app-f9343.firebaseapp.com',
+  databaseURL: 'https://product-app-f9343-default-rtdb.firebaseio.com',
+  projectId: 'product-app-f9343',
+  storageBucket: 'product-app-f9343.appspot.com',
+  messagingSenderId: '1086267291185',
+  appId: '1:1086267291185:web:b4581b738e5e349d66c710',
 };
 
 firebase.initializeApp(firebaseConfig);

@@ -1,21 +1,34 @@
 import React, { useEffect, useState } from 'react';
 import { Link, Route } from 'react-router-dom';
+import firebase from './firebase';
 import './App.scss';
-import { product } from './products';
+
 import { ProductList } from './components/ProductList';
 import './nav.scss';
 import { NewProduct } from './components/NewProduct';
 
-// import { NewProduct } from './components/NewProduct';
-
 export const App = () => {
-  const [currentData, setData] = useState([]);
-  // const [isShowData, setShowData] = useState(false);
-  // const [isAddNewProdut, addNewProduct] = useState(false);
+  const [products, setProducts] = useState([]);
+
+  const ref = firebase.firestore().collection('products');
+
+  const getProducts = () => {
+    ref.onSnapshot((querySnapchot) => {
+      const items = [];
+
+      querySnapchot.forEach((doc) => {
+        items.push(doc.data());
+      });
+
+      setProducts(items);
+    });
+  };
 
   useEffect(() => {
-    setData(product);
+    getProducts();
   }, []);
+
+  console.log(products);
 
   return (
     <>
@@ -26,7 +39,7 @@ export const App = () => {
               to="/products"
               className="item__title"
             >
-              Show Products
+              Products
             </Link>
           </li>
 
@@ -44,7 +57,7 @@ export const App = () => {
       <div className="products">
 
         <Route path="/products">
-          <ProductList products={currentData} />
+          <ProductList products={products} />
         </Route>
 
         <Route path="/addProducts">
