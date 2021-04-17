@@ -10,18 +10,18 @@ export const ProductList = ({ products }) => (
     {products.map((product) => (
       <li
         key={product.id}
-        className="product-list__item item"
+        className="product-list__product product"
         style={{ width: '500px' }}
       >
         <h2
-          className="item__title"
+          className="product__title"
         >
           {product.name.toUpperCase()}
         </h2>
 
         <div>
           <img
-            className="item__photo"
+            className="product__photo"
             alt="iphone 12"
             src={product.imageUrl}
             style={{ height: '300px' }}
@@ -34,7 +34,7 @@ export const ProductList = ({ products }) => (
           Edit
         </button>
 
-        <p className="item__description">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aliquam fugiat distinctio corrupti facilis fuga quisquam. Deserunt minus, perferendis quos</p>
+        <p className="product__description">{product.description}</p>
 
         <p>
           {`Count: ${product.count}`}
@@ -48,9 +48,9 @@ export const ProductList = ({ products }) => (
           {`Size: ${product.size.width} x ${product.size.height}`}
         </p>
 
-        <div className="item__container">
-          <img alt="iphone" src={like} className="item__like" />
-          <img alt="iphone" src={like} className="item__like" />
+        <div className="product__container">
+          <img alt="iphone" src={like} className="product__like" />
+          <img alt="iphone" src={like} className="product__like" />
         </div>
 
       </li>

@@ -10,6 +10,7 @@ export const product = [
       width: 200,
       height: 200,
     },
+    description: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aliquam fugiat distinctio corrupti facilis fuga quisquam. Deserunt minus, perferendis quos',
     weight: '200g',
     // comments: [Comment, Comment],
   },
@@ -23,6 +24,7 @@ export const product = [
       width: 200,
       height: 200,
     },
+    description: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aliquam fugiat distinctio corrupti facilis fuga quisquam. Deserunt minus, perferendis quos',
     weight: '200g',
     // comments: [Comment, Comment]
   },
@@ -37,6 +39,7 @@ export const product = [
       height: 200,
     },
     weight: '200g',
+    description: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aliquam fugiat distinctio corrupti facilis fuga quisquam. Deserunt minus, perferendis quos',
     // comments: [Comment, Comment]
   },
 ];

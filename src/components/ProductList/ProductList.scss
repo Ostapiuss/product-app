@@ -3,7 +3,7 @@
   justify-content: space-between;
   padding: 0;
 
-  &__item {
+  &__product {
     position: relative;
     list-style: none;
     background-color: #fff;
@@ -23,7 +23,7 @@
   }
 }
 
-.item {
+.product {
   &__photo {
     position: relative;
     left: 50%;
