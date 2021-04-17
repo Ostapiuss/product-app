@@ -28,6 +28,12 @@ export const ProductList = ({ products }) => (
           />
         </div>
 
+        <button
+          type="button"
+        >
+          Edit
+        </button>
+
         <p className="item__description">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aliquam fugiat distinctio corrupti facilis fuga quisquam. Deserunt minus, perferendis quos</p>
 
         <p>

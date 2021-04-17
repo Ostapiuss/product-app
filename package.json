@@ -1,5 +1,6 @@
 {
   "name": "product-app",
+  "homepage": "https://ostapiuss.github.io/product-app/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
