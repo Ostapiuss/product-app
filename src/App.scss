@@ -28,40 +28,6 @@
   color: #61dafb;
 }
 
-@mixin bottom-style {
-  outline: none;
-  border: 2px solid transparent;
-  padding: 15px;
-  color: #ffff;
-  cursor: pointer;
-  background: linear-gradient(#2367db,#236ada);
-  box-shadow: 1px 1px 5px #2367db;
-
-  font-size: 15px;
-
-  margin: 50px 0px 0px 20px;
-
-  transition: all 0.2s ease-in;
-
-  &:hover {
-    border: 2px solid #2367db;
-    background: transparent;
-    color: #2367db;
-  }
-}
-
-.products {
-  &__show-button {
-    @include bottom-style;
-    padding: 17px;
-  }
-
-  &__add-product {
-    @include bottom-style;
-
-    text-decoration: none;
-  }
-}
 
 @keyframes App-logo-spin {
   from {
