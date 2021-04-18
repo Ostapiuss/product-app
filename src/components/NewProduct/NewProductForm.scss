@@ -1,5 +1,4 @@
 .form {
-  color: #7c4029;
   display: flex;
   flex-direction: column;
 
@@ -11,7 +10,7 @@
 
     background: transparent;
 
-    border-bottom: 1px solid #7c4029;
+    border-bottom: 1px solid #e40a53;
 
     transition: font-size 0.2s ease-in;
 
@@ -20,28 +19,4 @@
     }
   }
 
-  &__submit {
-    border: 2px solid transparent;
-
-    background: #7c4029;
-    padding: 20px;
-
-    color: #fff;
-
-    text-transform: uppercase;
-
-    transition:
-      border 0.3s ease-in,
-      color 0.3s ease-in,
-      background 0.3s ease-in;
-
-    &:hover {
-      background: transparent;
-      border: 2px solid #7c4029;
-
-      color: #7c4029;
-
-      cursor: pointer;
-    }
-  }
 }

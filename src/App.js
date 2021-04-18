@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react';
 import {
   Link, Route, Switch, Redirect,
 } from 'react-router-dom';
+import {
+  AppBar, Container, Typography, Box, Toolbar,
+} from '@material-ui/core';
 import firebase from './firebase';
 
 import { ProductList } from './components/ProductList';
@@ -36,35 +39,44 @@ export const App = () => {
     getProducts();
   }, []);
 
-  // console.log(products);
-
   return (
     <>
-      <nav className="nav">
-        <ul className="nav__links">
-          <li className="nav__item">
-            <Link
-              to="/"
-              className="item__title"
-            >
-              Home
-            </Link>
-          </li>
+      <AppBar position="fixed">
+        <Container fixed>
 
-          <li className="nav__item item">
-            <Link
-              to="/products"
-              className="item__title"
-            >
-              Products
-            </Link>
-          </li>
+          <Toolbar className="header">
+            <Typography className="header__logo-title">
+              Product App
+            </Typography>
 
-        </ul>
-      </nav>
+            <Box
+              className="header__navigation navigation"
+              display="flex"
+            >
+
+              <Link
+                to="/"
+                className="navigation__title"
+                color="primary"
+              >
+                Home
+              </Link>
+
+              <Link
+                to="/products"
+                className="navigation__title"
+                color="secondary"
+              >
+                Products
+              </Link>
+
+            </Box>
+          </Toolbar>
+
+        </Container>
+      </AppBar>
 
       <div className="products">
-
         <Switch>
           <Route path="/" exact>
             <HomePage />

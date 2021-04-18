@@ -1,8 +1,7 @@
 /* eslint-disable no-unused-vars */
-/* eslint-disable no-else-return */
-/* eslint-disable no-useless-return */
-/* eslint-disable react/prop-types */
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import Button from '@material-ui/core/Button';
 import './NewProduct.scss';
 import './NewProductForm.scss';
 
@@ -104,7 +103,7 @@ export const NewProduct = ({ onAddProduct }) => {
             className="form__item"
             id="product-width"
             name="width"
-            type="text"
+            type="number"
             placeholder="Width"
             value={newProduct.width}
             onChange={inputHandler}
@@ -116,20 +115,26 @@ export const NewProduct = ({ onAddProduct }) => {
             className="form__item"
             id="product-height"
             name="height"
-            type="text"
+            type="number"
             placeholder="Height"
             value={newProduct.height}
             onChange={inputHandler}
             required
           />
         </label>
-        <button
-          className="form__submit"
+
+        <Button
+          variant="contained"
+          color="primary"
           type="submit"
         >
-          ADD NEW PRODUCT
-        </button>
+          Add new product
+        </Button>
       </form>
     </div>
   );
 };
+
+NewProduct.propTypes = PropTypes.shape({
+  onAddProduct: PropTypes.func.isRequired,
+}).isRequired;
