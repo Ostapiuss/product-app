@@ -1,3 +1,6 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-else-return */
+/* eslint-disable no-useless-return */
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import './NewProduct.scss';
@@ -5,6 +8,19 @@ import './NewProductForm.scss';
 
 export const NewProduct = ({ onAddProduct }) => {
   const [newProduct, setNewProduct] = useState({});
+  const [error, setError] = useState(false);
+
+  const isValidProductLink = (currentURL) => {
+    // eslint-disable-next-line
+    const isValidURL = /^((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=+$,\w]+@)?[A-Za-z0-9.-]+|(?:www\.|[-;:&=+$,\w]+@)[A-Za-z0-9.-]+)((?:\/[+~%/.\w-_]*)?\??(?:[-+=&;%@.\w_]*)#?(?:[.!/\\\w]*))?)$/;
+
+    if (!isValidURL.test(currentURL)) {
+      setError(true);
+    } else {
+      setError(false);
+      onAddProduct(newProduct);
+    }
+  };
 
   const inputHandler = (event) => {
     const { value, name } = event.target;
@@ -14,8 +30,7 @@ export const NewProduct = ({ onAddProduct }) => {
 
   const submitNewProduct = (event) => {
     event.preventDefault();
-    onAddProduct(newProduct);
-    setNewProduct({});
+    isValidProductLink(newProduct.imageUrl);
   };
 
   return (
