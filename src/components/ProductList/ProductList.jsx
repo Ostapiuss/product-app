@@ -1,10 +1,8 @@
-/* eslint-disable no-unused-vars */
 /* eslint-disable max-len */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Button, Box } from '@material-ui/core';
 import { Link } from 'react-router-dom';
-import like from '../../images/icon.png';
 
 import './ProductList.scss';
 import { ModalEdit } from '../ModalEdit';
@@ -12,7 +10,7 @@ import { ModalDelete } from '../ModalDelete';
 import { ModalComments } from '../ModalComments';
 
 export const ProductList = ({
-  products, onEdit, onDelete, productWithComments,
+  products, onEdit, onDelete, comments, commentFilter,
 }) => {
   const [isOpenModal, setOpenModal] = useState(false);
   const [currentProduct, setCurrentProduct] = useState({});
@@ -106,6 +104,7 @@ export const ProductList = ({
                   style={{ color: '#ffff', width: '100%' }}
                   onClick={() => {
                     setOpenComments(true);
+                    commentFilter(product.id);
                   }}
                 >
                   Comments
@@ -126,7 +125,7 @@ export const ProductList = ({
                 <ModalComments
                   isOpen={isOpenComments}
                   setOpenComments={setOpenComments}
-                  productWithComments={productWithComments}
+                  comments={comments}
                 />
 
               </li>
@@ -152,4 +151,12 @@ ProductList.propTypes = PropTypes.shape({
     weight: PropTypes.string.isRequired,
   }).isRequired,
   onEdit: PropTypes.func.isRequired,
+  onDelete: PropTypes.func.isRequired,
+  comments: PropTypes.arrayOf({
+    id: PropTypes.string.isRequired,
+    date: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    productId: PropTypes.string.isRequired,
+  }).isRequired,
+  commentsFilter: PropTypes.func.isRequired,
 }).isRequired;

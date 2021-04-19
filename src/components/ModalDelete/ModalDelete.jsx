@@ -1,5 +1,5 @@
-/* eslint-disable react/prop-types */
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import {
   Dialog, DialogTitle, DialogContent, RadioGroup, FormControlLabel, Radio, DialogActions, Button,
 } from '@material-ui/core';
@@ -66,3 +66,19 @@ export const ModalDelete = ({
     </Dialog>
   );
 };
+
+ModalDelete.propTypes = PropTypes.shape({
+  isOpen: PropTypes.bool.isRequired,
+  deleteProduct: PropTypes.func.isRequired,
+  setOpenDeleteModal: PropTypes.func.isRequired,
+  product: PropTypes.shape({
+    color: PropTypes.string.isRequired,
+    count: PropTypes.number.isRequired,
+    description: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired,
+    imageUrl: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    width: PropTypes.number.isRequired,
+    height: PropTypes.number.isRequired,
+  }).isRequired,
+}).isRequired;

@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
 import {
   Link, Route, Switch, Redirect,
@@ -19,10 +18,14 @@ import './nav.scss';
 export const App = () => {
   const [products, setProducts] = useState([]);
   const [commentsOfProduct, setComments] = useState([]);
-  const [productWithComments, setProductData] = useState([]);
+  const [visibleComments, setVisibleComments] = useState([]);
 
   const ref = firebase.firestore().collection('products');
   const comments = firebase.firestore().collection('comments');
+
+  const filteredByProductId = (productId) => {
+    setVisibleComments(commentsOfProduct.filter((comment) => comment.productId === productId));
+  };
 
   const getComments = () => {
     comments.onSnapshot((querrySnapchot) => {
@@ -43,10 +46,11 @@ export const App = () => {
       querySnapchot.forEach((doc) => {
         items.push(doc.data());
       });
+
       setProducts(items);
     });
   };
-  console.log('Comments', commentsOfProduct);
+
   const addProduct = (newProduct) => {
     ref
       .doc(newProduct.id)
@@ -68,14 +72,7 @@ export const App = () => {
   useEffect(() => {
     getComments();
     getProducts();
-
-    setProducts(products.map((product) => ({
-      ...product,
-      comments: commentsOfProduct.filter((comment) => comment.productId === product.id),
-    })));
   }, []);
-
-  console.log('products', products);
 
   return (
     <>
@@ -114,28 +111,34 @@ export const App = () => {
         </Container>
       </AppBar>
 
-      <div className="products">
-        <Switch>
-          <Route path="/" exact>
-            <HomePage />
-          </Route>
+      {products
 
-          <Route path="/products">
-            <ProductList
-              products={products}
-              onEdit={editProduct}
-              onDelete={deleteProduct}
-              productWithComments={productWithComments}
-            />
-          </Route>
+        ? (
+          <div className="products">
+            <Switch>
+              <Route path="/" exact>
+                <HomePage />
+              </Route>
 
-          <Route path="/addProducts">
-            <NewProduct onAddProduct={addProduct} />
-          </Route>
+              <Route path="/products">
+                <ProductList
+                  products={products}
+                  onEdit={editProduct}
+                  onDelete={deleteProduct}
+                  comments={visibleComments}
+                  commentFilter={filteredByProductId}
+                />
+              </Route>
 
-          <Redirect to="/" />
-        </Switch>
-      </div>
+              <Route path="/addProducts">
+                <NewProduct onAddProduct={addProduct} />
+              </Route>
+
+              <Redirect to="/" />
+            </Switch>
+          </div>
+        )
+        : <p>Loading</p>}
     </>
   );
 };

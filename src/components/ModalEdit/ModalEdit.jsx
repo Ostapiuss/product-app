@@ -1,6 +1,5 @@
-/* eslint-disable no-shadow */
-/* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import {
   Button, Dialog, DialogTitle, DialogContent, TextField, DialogActions,
 } from '@material-ui/core';
@@ -144,3 +143,19 @@ export const ModalEdit = ({
     </Dialog>
   );
 };
+
+ModalEdit.propTypes = PropTypes.shape({
+  isOpen: PropTypes.bool.isRequired,
+  product: PropTypes.shape({
+    color: PropTypes.string.isRequired,
+    count: PropTypes.number.isRequired,
+    description: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired,
+    imageUrl: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    width: PropTypes.number.isRequired,
+    height: PropTypes.number.isRequired,
+  }).isRequired,
+  edit: PropTypes.func.isRequired,
+  setOpenModal: PropTypes.func.isRequired,
+}).isRequired;

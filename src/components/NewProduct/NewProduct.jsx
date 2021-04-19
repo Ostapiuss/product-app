@@ -1,23 +1,24 @@
-/* eslint-disable no-unused-vars */
-import React, { useState, useEffect } from 'react';
+/* eslint-disable no-useless-return */
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import Button from '@material-ui/core/Button';
 import './NewProduct.scss';
 import './NewProductForm.scss';
 
 export const NewProduct = ({ onAddProduct }) => {
   const [newProduct, setNewProduct] = useState({});
-  const [error, setError] = useState(false);
+  const [isError, setError] = useState(false);
 
   const isValidProductLink = (currentURL) => {
     // eslint-disable-next-line
     const isValidURL = /^((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=+$,\w]+@)?[A-Za-z0-9.-]+|(?:www\.|[-;:&=+$,\w]+@)[A-Za-z0-9.-]+)((?:\/[+~%/.\w-_]*)?\??(?:[-+=&;%@.\w_]*)#?(?:[.!/\\\w]*))?)$/;
 
-    if (!isValidURL.test(currentURL)) {
-      setError(true);
-    } else {
+    if (isValidURL.test(currentURL)) {
       setError(false);
       onAddProduct(newProduct);
+    } else {
+      setError(true);
     }
   };
 
@@ -30,16 +31,19 @@ export const NewProduct = ({ onAddProduct }) => {
   const submitNewProduct = (event) => {
     event.preventDefault();
     isValidProductLink(newProduct.imageUrl);
-    setNewProduct({
-      id: '',
-      name: '',
-      imageUrl: '',
-      description: '',
-      count: '',
-      color: '',
-      width: '',
-      height: '',
-    });
+
+    if (isError === false) {
+      setNewProduct({
+        id: '',
+        name: '',
+        imageUrl: '',
+        description: '',
+        count: '',
+        color: '',
+        width: '',
+        height: '',
+      });
+    }
   };
 
   return (
@@ -73,8 +77,11 @@ export const NewProduct = ({ onAddProduct }) => {
           />
         </label>
         <label htmlFor="product-img">
+          {isError && (
+          <p style={{ color: 'red' }}>Not Valid URL </p>
+          )}
           <input
-            className="form__item"
+            className={classNames('form__item', { error: isError })}
             name="imageUrl"
             id="product-img"
             type="text"
