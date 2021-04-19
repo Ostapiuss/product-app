@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable max-len */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
@@ -7,12 +8,14 @@ import like from '../../images/icon.png';
 
 import './ProductList.scss';
 import { ModalEdit } from '../ModalEdit';
+import { ModalDelete } from '../ModalDelete';
 
-export const ProductList = ({ products, onEdit }) => {
+export const ProductList = ({ products, onEdit, onDelete }) => {
   const [isOpenModal, setOpenModal] = useState(false);
   const [currentProduct, setCurrentProduct] = useState({});
+  const [isOpenDeleteModal, setOpenDeleteModal] = useState(false);
 
-  const view = (product) => {
+  const setProduct = (product) => {
     setCurrentProduct(product);
   };
 
@@ -59,7 +62,7 @@ export const ProductList = ({ products, onEdit }) => {
                     type="button"
                     color="primary"
                     onClick={() => {
-                      view(product);
+                      setProduct(product);
                       setOpenModal(true);
                     }}
                   >
@@ -70,6 +73,10 @@ export const ProductList = ({ products, onEdit }) => {
                     variant="contained"
                     type="button"
                     style={{ backgroundColor: '#DB4E3F', color: '#ffff' }}
+                    onClick={() => {
+                      setProduct(product);
+                      setOpenDeleteModal(true);
+                    }}
                   >
                     Delete
                   </Button>
@@ -98,6 +105,12 @@ export const ProductList = ({ products, onEdit }) => {
                   isOpen={isOpenModal}
                   setOpenModal={setOpenModal}
                   edit={onEdit}
+                />
+                <ModalDelete
+                  isOpen={isOpenDeleteModal}
+                  deleteProduct={onDelete}
+                  setOpenDeleteModal={setOpenDeleteModal}
+                  product={currentProduct}
                 />
 
               </li>

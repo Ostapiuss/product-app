@@ -43,6 +43,12 @@ export const App = () => {
       .set(updateProduct);
   };
 
+  const deleteProduct = (product) => {
+    ref
+      .doc(product.id)
+      .delete();
+  };
+
   useEffect(() => {
     getProducts();
   }, []);
@@ -91,7 +97,7 @@ export const App = () => {
           </Route>
 
           <Route path="/products">
-            <ProductList products={products} onEdit={editProduct} />
+            <ProductList products={products} onEdit={editProduct} onDelete={deleteProduct} />
           </Route>
 
           <Route path="/addProducts">
