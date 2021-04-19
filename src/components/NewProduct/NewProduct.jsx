@@ -142,6 +142,7 @@ export const NewProduct = ({ onAddProduct }) => {
         >
           Add new product
         </Button>
+
       </form>
     </div>
   );

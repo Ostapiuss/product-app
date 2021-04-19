@@ -32,7 +32,9 @@ export const App = () => {
   };
 
   const addProduct = (newProduct) => {
-    ref.add(newProduct);
+    ref
+      .doc(newProduct.id)
+      .set(newProduct);
   };
 
   const editProduct = (updateProduct) => {

@@ -124,10 +124,21 @@ export const ModalEdit = ({
         <Button
           color="secondary"
           onClick={() => {
-            setOpenModal(false);
+            setUpdateProduct(product);
           }}
         >
           Undo
+        </Button>
+
+        <Button
+          variant="contained"
+          color="secondary"
+          type="button"
+          onClick={() => {
+            setOpenModal(false);
+          }}
+        >
+          X
         </Button>
       </DialogActions>
     </Dialog>
