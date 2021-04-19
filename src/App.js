@@ -38,7 +38,7 @@ export const App = () => {
   const editProduct = (updateProduct) => {
     ref
       .doc(updateProduct.id)
-      .update(updateProduct);
+      .set(updateProduct);
   };
 
   useEffect(() => {

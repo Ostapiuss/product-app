@@ -39,7 +39,7 @@ export const ModalEdit = ({
           label="Name"
           type="text"
           name="name"
-          value={product.name}
+          value={updateProduct.name}
           onChange={inputHandler}
           fullWidth
         />
