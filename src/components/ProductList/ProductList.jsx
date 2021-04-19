@@ -13,7 +13,6 @@ export const ProductList = ({ products, onEdit }) => {
   const [currentProduct, setCurrentProduct] = useState({});
 
   const view = (product) => {
-    console.log('product: ', product);
     setCurrentProduct(product);
   };
 
@@ -95,13 +94,7 @@ export const ProductList = ({ products, onEdit }) => {
                   <img alt="iphone" src={like} className="product__like" />
                 </div>
                 <ModalEdit
-                  name={currentProduct.name}
-                  imageUrl={currentProduct.imageUrl}
-                  description={currentProduct.description}
-                  count={currentProduct.count}
-                  color={currentProduct.color}
-                  width={currentProduct.width}
-                  height={currentProduct.height}
+                  product={currentProduct}
                   isOpen={isOpenModal}
                   setOpenModal={setOpenModal}
                   edit={onEdit}

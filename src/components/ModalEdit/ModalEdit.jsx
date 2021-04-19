@@ -9,29 +9,11 @@ import './ModalEdit.scss';
 
 export const ModalEdit = ({
   isOpen,
-  name,
-  imageUrl,
-  description,
-  count,
-  color,
-  width,
-  height,
+  product,
   edit,
   setOpenModal,
 }) => {
-  const [updateProduct, setUpdateProduct] = useState({});
-
-  useEffect(() => {
-    setUpdateProduct({
-      name,
-      imageUrl,
-      description,
-      count,
-      color,
-      width,
-      height,
-    });
-  }, []);
+  const [updateProduct, setUpdateProduct] = useState({ ...product });
 
   const inputHandler = (event) => {
     const { value, name } = event.target;
@@ -39,7 +21,10 @@ export const ModalEdit = ({
     setUpdateProduct({ ...updateProduct, [name]: value });
   };
 
-  console.log(updateProduct);
+  useEffect(() => {
+    setUpdateProduct(product);
+  }, [product]);
+
   return (
     <Dialog
       className="product__edit-form"
@@ -54,7 +39,7 @@ export const ModalEdit = ({
           label="Name"
           type="text"
           name="name"
-          value={updateProduct.name}
+          value={product.name}
           onChange={inputHandler}
           fullWidth
         />
@@ -64,7 +49,7 @@ export const ModalEdit = ({
           id="modal-image"
           label="Image URL"
           type="text"
-          name="name"
+          name="imageUrl"
           value={updateProduct.imageUrl}
           onChange={inputHandler}
           fullWidth
@@ -73,7 +58,7 @@ export const ModalEdit = ({
           autoFocus
           margin="dense"
           id="modal-description"
-          name="name"
+          name="description"
           label="Description"
           value={updateProduct.description}
           onChange={inputHandler}
@@ -85,7 +70,7 @@ export const ModalEdit = ({
           margin="dense"
           id="modal-count"
           label="Count of products"
-          name="name"
+          name="count"
           value={updateProduct.count}
           onChange={inputHandler}
           type="text"
@@ -95,7 +80,7 @@ export const ModalEdit = ({
           autoFocus
           margin="dense"
           id="modal-color"
-          name="name"
+          name="color"
           label="Color"
           value={updateProduct.color}
           onChange={inputHandler}
@@ -106,7 +91,7 @@ export const ModalEdit = ({
           autoFocus
           margin="dense"
           id="modal-width"
-          name="name"
+          name="width"
           label="Width"
           value={updateProduct.width}
           onChange={inputHandler}
@@ -117,7 +102,7 @@ export const ModalEdit = ({
           autoFocus
           margin="dense"
           id="modal-height"
-          name="name"
+          name="height"
           label="Height"
           value={updateProduct.height}
           onChange={inputHandler}
