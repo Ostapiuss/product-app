@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
 import './NewProduct.scss';
@@ -30,6 +30,16 @@ export const NewProduct = ({ onAddProduct }) => {
   const submitNewProduct = (event) => {
     event.preventDefault();
     isValidProductLink(newProduct.imageUrl);
+    setNewProduct({
+      id: '',
+      name: '',
+      imageUrl: '',
+      description: '',
+      count: '',
+      color: '',
+      width: '',
+      height: '',
+    });
   };
 
   return (

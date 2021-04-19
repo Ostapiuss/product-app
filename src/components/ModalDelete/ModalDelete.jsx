@@ -46,7 +46,7 @@ export const ModalDelete = ({
           onClick={() => {
             if (isDelete) {
               deleteProduct(product);
-              console.log('product: ', product);
+              setOpenDeleteModal(false);
             }
           }}
         >

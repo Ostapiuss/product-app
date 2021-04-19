@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import {
   Link, Route, Switch, Redirect,
 } from 'react-router-dom';
+
 import {
   AppBar, Container, Typography, Box, Toolbar,
 } from '@material-ui/core';
@@ -106,7 +107,6 @@ export const App = () => {
 
           <Redirect to="/" />
         </Switch>
-
       </div>
     </>
   );
