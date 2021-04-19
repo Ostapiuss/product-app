@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
 import {
   Link, Route, Switch, Redirect,
@@ -17,8 +18,23 @@ import './nav.scss';
 
 export const App = () => {
   const [products, setProducts] = useState([]);
+  const [commentsOfProduct, setComments] = useState([]);
+  const [productWithComments, setProductData] = useState([]);
 
   const ref = firebase.firestore().collection('products');
+  const comments = firebase.firestore().collection('comments');
+
+  const getComments = () => {
+    comments.onSnapshot((querrySnapchot) => {
+      const newComments = [];
+
+      querrySnapchot.forEach((comment) => {
+        newComments.push(comment.data());
+      });
+
+      setComments(newComments);
+    });
+  };
 
   const getProducts = () => {
     ref.onSnapshot((querySnapchot) => {
@@ -27,11 +43,10 @@ export const App = () => {
       querySnapchot.forEach((doc) => {
         items.push(doc.data());
       });
-
       setProducts(items);
     });
   };
-
+  console.log('Comments', commentsOfProduct);
   const addProduct = (newProduct) => {
     ref
       .doc(newProduct.id)
@@ -51,8 +66,16 @@ export const App = () => {
   };
 
   useEffect(() => {
+    getComments();
     getProducts();
+
+    setProducts(products.map((product) => ({
+      ...product,
+      comments: commentsOfProduct.filter((comment) => comment.productId === product.id),
+    })));
   }, []);
+
+  console.log('products', products);
 
   return (
     <>
@@ -98,7 +121,12 @@ export const App = () => {
           </Route>
 
           <Route path="/products">
-            <ProductList products={products} onEdit={editProduct} onDelete={deleteProduct} />
+            <ProductList
+              products={products}
+              onEdit={editProduct}
+              onDelete={deleteProduct}
+              productWithComments={productWithComments}
+            />
           </Route>
 
           <Route path="/addProducts">

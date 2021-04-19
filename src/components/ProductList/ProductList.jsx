@@ -9,11 +9,15 @@ import like from '../../images/icon.png';
 import './ProductList.scss';
 import { ModalEdit } from '../ModalEdit';
 import { ModalDelete } from '../ModalDelete';
+import { ModalComments } from '../ModalComments';
 
-export const ProductList = ({ products, onEdit, onDelete }) => {
+export const ProductList = ({
+  products, onEdit, onDelete, productWithComments,
+}) => {
   const [isOpenModal, setOpenModal] = useState(false);
   const [currentProduct, setCurrentProduct] = useState({});
   const [isOpenDeleteModal, setOpenDeleteModal] = useState(false);
+  const [isOpenComments, setOpenComments] = useState(false);
 
   const setProduct = (product) => {
     setCurrentProduct(product);
@@ -35,9 +39,8 @@ export const ProductList = ({ products, onEdit, onDelete }) => {
       <Box mt={1} ml={5} display="flex" flexDirection="column">
         <ul className="product-list">
           {products.map((product) => (
-            <Box mr={3}>
+            <Box key={product.id} mr={3}>
               <li
-                key={product.id}
                 className="product-list__product product"
                 style={{ width: '500px' }}
               >
@@ -96,10 +99,18 @@ export const ProductList = ({ products, onEdit, onDelete }) => {
                   {`Size: ${product.width} x ${product.height}`}
                 </p>
 
-                <div className="product__container">
-                  <img alt="iphone" src={like} className="product__like" />
-                  <img alt="iphone" src={like} className="product__like" />
-                </div>
+                <Button
+                  variant="contained"
+                  type="button"
+                  color="primary"
+                  style={{ color: '#ffff', width: '100%' }}
+                  onClick={() => {
+                    setOpenComments(true);
+                  }}
+                >
+                  Comments
+                </Button>
+
                 <ModalEdit
                   product={currentProduct}
                   isOpen={isOpenModal}
@@ -111,6 +122,11 @@ export const ProductList = ({ products, onEdit, onDelete }) => {
                   deleteProduct={onDelete}
                   setOpenDeleteModal={setOpenDeleteModal}
                   product={currentProduct}
+                />
+                <ModalComments
+                  isOpen={isOpenComments}
+                  setOpenComments={setOpenComments}
+                  productWithComments={productWithComments}
                 />
 
               </li>
