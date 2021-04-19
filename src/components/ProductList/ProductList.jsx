@@ -1,34 +1,24 @@
 /* eslint-disable max-len */
 import React, { useState } from 'react';
-import Modal from 'react-modal';
 import PropTypes from 'prop-types';
 import { Button, Box } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import like from '../../images/icon.png';
 
 import './ProductList.scss';
+import { ModalEdit } from '../ModalEdit';
 
-export const ProductList = ({ products }) => {
+export const ProductList = ({ products, onEdit }) => {
   const [isOpenModal, setOpenModal] = useState(false);
+  const [currentProduct, setCurrentProduct] = useState({});
 
-  const style = {
-    content: {
-      borderRadius: '4px',
-      height: '400px',
-      left: '50%',
-      top: '50%',
-      transform: 'translate(-50%, -50%)',
-      padding: '2rem',
-      position: 'fixed',
-      right: 'auto',
-      width: '400px',
-
-    },
+  const view = (product) => {
+    console.log('product: ', product);
+    setCurrentProduct(product);
   };
 
   return (
     <>
-
       <Box mt={10} ml={5}>
         <Button variant="contained" color="secondary">
           <Link
@@ -70,26 +60,12 @@ export const ProductList = ({ products }) => {
                     type="button"
                     color="primary"
                     onClick={() => {
+                      view(product);
                       setOpenModal(true);
                     }}
                   >
                     Edit
                   </Button>
-
-                  <Modal
-                    isOpen={isOpenModal}
-                    style={style}
-                  >
-                    <Button
-                      type="button"
-                      color="secondary"
-                      onClick={() => {
-                        setOpenModal(false);
-                      }}
-                    >
-                      X
-                    </Button>
-                  </Modal>
 
                   <Button
                     variant="contained"
@@ -118,6 +94,18 @@ export const ProductList = ({ products }) => {
                   <img alt="iphone" src={like} className="product__like" />
                   <img alt="iphone" src={like} className="product__like" />
                 </div>
+                <ModalEdit
+                  name={currentProduct.name}
+                  imageUrl={currentProduct.imageUrl}
+                  description={currentProduct.description}
+                  count={currentProduct.count}
+                  color={currentProduct.color}
+                  width={currentProduct.width}
+                  height={currentProduct.height}
+                  isOpen={isOpenModal}
+                  setOpenModal={setOpenModal}
+                  edit={onEdit}
+                />
 
               </li>
             </Box>
@@ -130,13 +118,16 @@ export const ProductList = ({ products }) => {
 };
 
 ProductList.propTypes = PropTypes.shape({
-  id: PropTypes.number.isRequired,
-  imageUrl: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequireds,
-  count: PropTypes.number.isRequiredm,
-  size: PropTypes.shape({
-    width: PropTypes.number.isRequired,
-    height: PropTypes.number.isRequired,
-  }),
-  weight: PropTypes.string.isRequired,
+  products: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    imageUrl: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequireds,
+    count: PropTypes.number.isRequiredm,
+    size: PropTypes.shape({
+      width: PropTypes.number.isRequired,
+      height: PropTypes.number.isRequired,
+    }),
+    weight: PropTypes.string.isRequired,
+  }).isRequired,
+  onEdit: PropTypes.func.isRequired,
 }).isRequired;

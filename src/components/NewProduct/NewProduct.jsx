@@ -38,6 +38,18 @@ export const NewProduct = ({ onAddProduct }) => {
         onSubmit={submitNewProduct}
         className="new-product__form form"
       >
+        <label htmlFor="product-id">
+          <input
+            className="form__item"
+            id="product-id"
+            name="id"
+            type="text"
+            placeholder="ID"
+            value={newProduct.id}
+            onChange={inputHandler}
+            required
+          />
+        </label>
         <label htmlFor="product-name">
           <input
             className="form__item"

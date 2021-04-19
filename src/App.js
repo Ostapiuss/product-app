@@ -35,6 +35,12 @@ export const App = () => {
     ref.add(newProduct);
   };
 
+  const editProduct = (updateProduct) => {
+    ref
+      .doc(updateProduct.id)
+      .update(updateProduct);
+  };
+
   useEffect(() => {
     getProducts();
   }, []);
@@ -83,7 +89,7 @@ export const App = () => {
           </Route>
 
           <Route path="/products">
-            <ProductList products={products} />
+            <ProductList products={products} onEdit={editProduct} />
           </Route>
 
           <Route path="/addProducts">
