@@ -47,6 +47,8 @@ export const ModalDelete = ({
             if (isDelete) {
               deleteProduct(product);
               setOpenDeleteModal(false);
+            } else {
+              setOpenDeleteModal(false);
             }
           }}
         >
