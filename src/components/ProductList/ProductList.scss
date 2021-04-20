@@ -1,7 +1,6 @@
 .product-list {
   display: flex;
-  justify-content: space-between;
-  padding: 0;
+  flex-wrap: wrap;
 
   &__product {
     position: relative;
@@ -17,7 +16,7 @@
     padding: 20px;
 
     &:hover {
-      transform: scale(1.05);
+      transform: scale(1.02);
     }
   }
 }

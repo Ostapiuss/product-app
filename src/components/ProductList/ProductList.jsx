@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Button, Box } from '@material-ui/core';
+import { Button, Box, Grid } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 
 import './ProductList.scss';
@@ -46,10 +46,10 @@ export const ProductList = React.memo(
           </Button>
         </Box>
 
-        <Box mt={1} ml={5} display="flex" flexDirection="column">
+        <Grid mt={1} ml={5}>
           <ul className="product-list">
             {products.map((product) => (
-              <Box key={product.id} mr={3}>
+              <Box key={product.id} mr={3} mb={3} width="auto">
                 <li
                   className="product-list__product product"
                   style={{ width: '500px' }}
@@ -146,7 +146,7 @@ export const ProductList = React.memo(
               </Box>
             ))}
           </ul>
-        </Box>
+        </Grid>
 
       </>
     );

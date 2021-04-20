@@ -10,3 +10,12 @@
   border: 1px solid red;
   color: red;
 }
+
+@media screen and (max-width: 450px) {
+  .new-product {
+    position: absolute;
+    left: 0%;
+    top: 0%;
+    transform: translate(-0%,-0%);
+  }
+}
