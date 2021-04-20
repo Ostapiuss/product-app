@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/product-app/static/css/main.bd4a00f9.chunk.css",
-    "main.js": "/product-app/static/js/main.129b77ce.chunk.js",
-    "main.js.map": "/product-app/static/js/main.129b77ce.chunk.js.map",
-    "runtime-main.js": "/product-app/static/js/runtime-main.5abf4e1d.js",
-    "runtime-main.js.map": "/product-app/static/js/runtime-main.5abf4e1d.js.map",
-    "static/js/2.124cf8df.chunk.js": "/product-app/static/js/2.124cf8df.chunk.js",
-    "static/js/2.124cf8df.chunk.js.map": "/product-app/static/js/2.124cf8df.chunk.js.map",
-    "static/js/3.0f8aefcc.chunk.js": "/product-app/static/js/3.0f8aefcc.chunk.js",
-    "static/js/3.0f8aefcc.chunk.js.map": "/product-app/static/js/3.0f8aefcc.chunk.js.map",
+    "main.js": "/product-app/static/js/main.d8a7050b.chunk.js",
+    "main.js.map": "/product-app/static/js/main.d8a7050b.chunk.js.map",
+    "runtime-main.js": "/product-app/static/js/runtime-main.fd5c3df7.js",
+    "runtime-main.js.map": "/product-app/static/js/runtime-main.fd5c3df7.js.map",
+    "static/js/2.69040d66.chunk.js": "/product-app/static/js/2.69040d66.chunk.js",
+    "static/js/2.69040d66.chunk.js.map": "/product-app/static/js/2.69040d66.chunk.js.map",
+    "static/js/3.cf6fbd00.chunk.js": "/product-app/static/js/3.cf6fbd00.chunk.js",
+    "static/js/3.cf6fbd00.chunk.js.map": "/product-app/static/js/3.cf6fbd00.chunk.js.map",
     "index.html": "/product-app/index.html",
     "static/css/main.bd4a00f9.chunk.css.map": "/product-app/static/css/main.bd4a00f9.chunk.css.map",
-    "static/js/2.124cf8df.chunk.js.LICENSE.txt": "/product-app/static/js/2.124cf8df.chunk.js.LICENSE.txt"
+    "static/js/2.69040d66.chunk.js.LICENSE.txt": "/product-app/static/js/2.69040d66.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.5abf4e1d.js",
-    "static/js/2.124cf8df.chunk.js",
+    "static/js/runtime-main.fd5c3df7.js",
+    "static/js/2.69040d66.chunk.js",
     "static/css/main.bd4a00f9.chunk.css",
-    "static/js/main.129b77ce.chunk.js"
+    "static/js/main.d8a7050b.chunk.js"
   ]
 }
