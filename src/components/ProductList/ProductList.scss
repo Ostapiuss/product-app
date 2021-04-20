@@ -3,6 +3,9 @@
   flex-wrap: wrap;
 
   &__product {
+
+    width: auto;
+    min-width: 500px;
     position: relative;
     list-style: none;
     background-color: #fff;

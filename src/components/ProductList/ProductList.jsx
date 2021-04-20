@@ -49,10 +49,9 @@ export const ProductList = React.memo(
         <Grid mt={1} ml={5}>
           <ul className="product-list">
             {products.map((product) => (
-              <Box key={product.id} mr={3} mb={3} width="auto">
+              <Box key={product.id} mr={3} mb={3}>
                 <li
                   className="product-list__product product"
-                  style={{ width: '500px' }}
                 >
                   <h2
                     className="product__title"
