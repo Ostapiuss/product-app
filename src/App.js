@@ -84,15 +84,13 @@ export const App = () => {
     getProducts();
   }, []);
 
-  console.log(products);
-
   return (
     <>
       <AppBar position="fixed">
         <Container fixed>
 
           <Toolbar className="header">
-            <Typography className="header__logo-title">
+            <Typography className="header__logo">
               Product App
             </Typography>
 

@@ -6,7 +6,9 @@ export const HomePage = () => (
   <section>
     <Paper>
       <Container fixed>
-        <Box className="header__logo-title" mt={10}>
+        <Box
+          className="header__logo-title"
+        >
           Product App
         </Box>
       </Container>
