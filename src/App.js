@@ -39,6 +39,11 @@ export const App = () => {
     });
   };
 
+  const sortByName = () => {
+    setProducts([...products]
+      .sort((prevElement, nextElement) => prevElement.name.localeCompare(nextElement.name)));
+  };
+
   const getProducts = () => {
     ref.onSnapshot((querySnapchot) => {
       const items = [];
@@ -69,10 +74,17 @@ export const App = () => {
       .delete();
   };
 
+  const addComment = (comment) => {
+    comments
+      .add(comment);
+  };
+
   useEffect(() => {
     getComments();
     getProducts();
   }, []);
+
+  console.log(products);
 
   return (
     <>
@@ -127,6 +139,8 @@ export const App = () => {
                   onDelete={deleteProduct}
                   comments={visibleComments}
                   commentFilter={filteredByProductId}
+                  onAddComment={addComment}
+                  onSort={sortByName}
                 />
               </Route>
 

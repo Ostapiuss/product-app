@@ -1,4 +1,3 @@
-/* eslint-disable no-useless-return */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
@@ -10,15 +9,13 @@ export const NewProduct = ({ onAddProduct }) => {
   const [newProduct, setNewProduct] = useState({});
   const [isError, setError] = useState(false);
 
+  // eslint-disable-next-line consistent-return
   const isValidProductLink = (currentURL) => {
     // eslint-disable-next-line
     const isValidURL = /^((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=+$,\w]+@)?[A-Za-z0-9.-]+|(?:www\.|[-;:&=+$,\w]+@)[A-Za-z0-9.-]+)((?:\/[+~%/.\w-_]*)?\??(?:[-+=&;%@.\w_]*)#?(?:[.!/\\\w]*))?)$/;
 
     if (isValidURL.test(currentURL)) {
-      setError(false);
-      onAddProduct(newProduct);
-    } else {
-      setError(true);
+      return isValidURL;
     }
   };
 
@@ -30,9 +27,9 @@ export const NewProduct = ({ onAddProduct }) => {
 
   const submitNewProduct = (event) => {
     event.preventDefault();
-    isValidProductLink(newProduct.imageUrl);
-
-    if (isError === false) {
+    if (isValidProductLink(newProduct.imageUrl)) {
+      setError(false);
+      onAddProduct(newProduct);
       setNewProduct({
         id: '',
         name: '',
@@ -43,6 +40,8 @@ export const NewProduct = ({ onAddProduct }) => {
         width: '',
         height: '',
       });
+    } else {
+      setError(true);
     }
   };
 
@@ -54,10 +53,10 @@ export const NewProduct = ({ onAddProduct }) => {
       >
         <label htmlFor="product-id">
           <input
-            className="form__item"
             id="product-id"
+            className="form__item"
             name="id"
-            type="text"
+            type="number"
             placeholder="ID"
             value={newProduct.id}
             onChange={inputHandler}
@@ -66,9 +65,9 @@ export const NewProduct = ({ onAddProduct }) => {
         </label>
         <label htmlFor="product-name">
           <input
+            id="product-name"
             className="form__item"
             name="name"
-            id="product-name"
             type="text"
             placeholder="Name"
             value={newProduct.name}
@@ -81,9 +80,9 @@ export const NewProduct = ({ onAddProduct }) => {
           <p style={{ color: 'red' }}>Not Valid URL </p>
           )}
           <input
+            id="product-img"
             className={classNames('form__item', { error: isError })}
             name="imageUrl"
-            id="product-img"
             type="text"
             placeholder="Image URL"
             value={newProduct.imageUrl}
@@ -93,10 +92,10 @@ export const NewProduct = ({ onAddProduct }) => {
         </label>
         <label htmlFor="product-description">
           <textarea
-            className="form__item"
             id="product-description"
-            type="text"
+            className="form__item"
             name="description"
+            type="text"
             placeholder="Description"
             value={newProduct.description}
             onChange={inputHandler}
@@ -105,10 +104,10 @@ export const NewProduct = ({ onAddProduct }) => {
         </label>
         <label htmlFor="product-count">
           <input
-            className="form__item"
             id="product-count"
-            type="number"
+            className="form__item"
             name="count"
+            type="number"
             placeholder="Count of product"
             value={newProduct.count}
             onChange={inputHandler}
@@ -117,8 +116,8 @@ export const NewProduct = ({ onAddProduct }) => {
         </label>
         <label htmlFor="product-color">
           <input
-            className="form__item"
             id="product-color"
+            className="form__item"
             name="color"
             type="text"
             placeholder="Color"
@@ -129,8 +128,8 @@ export const NewProduct = ({ onAddProduct }) => {
         </label>
         <label htmlFor="product-width">
           <input
-            className="form__item"
             id="product-width"
+            className="form__item"
             name="width"
             type="number"
             placeholder="Width"
@@ -141,8 +140,8 @@ export const NewProduct = ({ onAddProduct }) => {
         </label>
         <label htmlFor="product-height">
           <input
-            className="form__item"
             id="product-height"
+            className="form__item"
             name="height"
             type="number"
             placeholder="Height"
